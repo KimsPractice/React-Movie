@@ -1,49 +1,62 @@
 import React, { Component } from "react";
 import Movie from "./Movie";
+import dotenv from "dotenv";
 import "./App.css";
+dotenv.config();
 
 class App extends Component {
   state = {};
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        movies: [
-          {
-            title: "Avangers : Assemble",
-            poster:
-              "https://images-na.ssl-images-amazon.com/images/I/71%2BNoq4xpNL._SY679_.jpg"
-          },
-          {
-            title: "Avangers : Age of Ultron",
-            poster:
-              "https://images-na.ssl-images-amazon.com/images/I/71SIYxcSNOL._SY606_.jpg"
-          },
-          {
-            title: "Avangers : Infinity War",
-            poster:
-              "https://images-na.ssl-images-amazon.com/images/I/A1krsAMZ4qL._SL1500_.jpg"
-          },
-          {
-            title: "Avangers : End Game",
-            poster:
-              "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg"
-          },
-          {
-            title: "SPIDER-MAN: FAR FROM HOME",
-            poster:
-              "https://d13ezvd6yrslxm.cloudfront.net/wp/wp-content/images/spider-man-far-from-home-posters-2.jpeg"
-          }
-        ]
-      });
-    }, 5000);
+    this._getMovies();
   }
 
   _renderMovies = () => {
-    const movies = this.state.movies.map((movie, index) => {
-      return <Movie title={movie.title} poster={movie.poster} key={index} />;
+    const movies = this.state.movies.map(movie => {
+      return (
+        <Movie
+          title={movie.title}
+          poster={"https://image.tmdb.org/t/p/w300/" + movie.poster_path}
+          key={movie.id}
+          genre={movie.genre_ids}
+          overview={movie.overview}
+        />
+      );
     });
     return movies;
+  };
+
+  _getGenre = () => {
+    const GENRE_API_URL =
+      "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
+      process.env.REACT_APP_API_KEY +
+      "&language=ko";
+    return fetch(GENRE_API_URL)
+      .then(genre => genre.json())
+      .catch(err => console.log(err));
+  };
+
+  _getMovies = async () => {
+    const movies = await this._callApi();
+    const genre = await this._getGenre();
+
+    console.log(movies);
+
+    this.setState({
+      movies
+    });
+  };
+
+  _callApi = () => {
+    const API_URL =
+      "https://api.themoviedb.org/3/movie/top_rated?api_key=" +
+      process.env.REACT_APP_API_KEY +
+      "&language=ko";
+
+    return fetch(API_URL)
+      .then(res => res.json())
+      .then(json => json.results)
+      .catch(err => console.log(err));
   };
 
   render() {
