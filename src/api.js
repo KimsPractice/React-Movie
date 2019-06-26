@@ -19,7 +19,7 @@ export const tvApi = {
       }
     }),
   searcTv: term =>
-    api.get("search/rv", {
+    api.get("search/tv", {
       params: {
         query: encodeURIComponent(term)
       }
