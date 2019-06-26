@@ -33,7 +33,7 @@ export default class extends React.Component {
     } catch (error) {
       console.log(error);
       this.state({
-        error: "Can't find movies info"
+        error: "Can't find movie info"
       });
     } finally {
       this.setState({
@@ -43,7 +43,6 @@ export default class extends React.Component {
   }
   render() {
     const { nowPlaying, upcoming, popular, error, loading } = this.state;
-    console.log(this.state);
 
     return (
       <HomePresenter
