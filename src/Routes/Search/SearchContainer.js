@@ -40,7 +40,7 @@ export default class extends React.Component {
       } = await movieApi.searchMovie(searchTerm);
       const {
         data: { results: tvResults }
-      } = await tvApi.searcTv(searchTerm);
+      } = await tvApi.searchTv(searchTerm);
       this.setState({
         movieResults,
         tvResults

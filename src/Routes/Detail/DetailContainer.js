@@ -33,7 +33,7 @@ export default class extends React.Component {
 
     try {
       if (isMovie) {
-        ({ data: result } = await movieApi.moiveDetail(parseId));
+        ({ data: result } = await movieApi.movieDetail(parseId));
       } else {
         ({ data: result } = await tvApi.tvDetail(parseId));
       }
