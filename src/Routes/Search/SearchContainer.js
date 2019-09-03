@@ -11,11 +11,22 @@ export default class extends React.Component {
     loading: false
   };
 
-  handleSubmiit = () => {
+  handleSubmiit = event => {
+    event.preventDefault();
     const { searchTerm } = this.state;
     if (searchTerm !== "") {
       this.searchByterm();
     }
+  };
+
+  updateTerm = event => {
+    const {
+      target: { value }
+    } = event;
+    console.log(value);
+    this.setState({
+      searchTerm: value
+    });
   };
 
   searchByterm = async () => {
@@ -55,6 +66,7 @@ export default class extends React.Component {
         error={error}
         loading={loading}
         handleSubmiit={this.handleSubmiit}
+        updateTerm={this.updateTerm}
       />
     );
   }
