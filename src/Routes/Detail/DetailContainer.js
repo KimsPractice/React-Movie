@@ -41,13 +41,16 @@ export default class extends React.Component {
       this.setState({ error: "Can't find anything.." });
     } finally {
       this.setState({ loading: false, result });
-      console.log(result);
     }
   }
 
   render() {
     const { result, error, loading } = this.state;
 
-    return <DetailPresenter result={result} error={error} loading={loading} />;
+    return (
+      <>
+        <DetailPresenter result={result} error={error} loading={loading} />
+      </>
+    );
   }
 }
