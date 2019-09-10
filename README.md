@@ -4,10 +4,10 @@ React 학습을 위해 CRA를 사용하여 무비 맵 클론
 
 ## Screens
 
-- [ ] Home
-- [ ] TV Shows
-- [ ] Search
-- [ ] Detail
+- [x] Home
+- [x] TV Shows
+- [x] Search
+- [x] Detail
 
 ## API Verbs
 
@@ -20,3 +20,7 @@ React 학습을 위해 CRA를 사용하여 무비 맵 클론
 - [x] TV Show Detail
 - [x] Movie Detail
 - [x] Seaarch
+
+# Priview
+
+[netlify](https://quizzical-bohr-64afa4.netlify.com/#/tv)
