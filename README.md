@@ -1,6 +1,6 @@
 #무비 앱 클론
 
-React 학습을 위해 CRA를 사용하여 무비 맵 클론
+React 학습을 위해 Create-React-App를 사용하여 무비 맵 클론
 
 ## Screens
 
@@ -21,6 +21,10 @@ React 학습을 위해 CRA를 사용하여 무비 맵 클론
 - [x] Movie Detail
 - [x] Seaarch
 
-# Priview
+# Preview
 
 [netlify](https://quizzical-bohr-64afa4.netlify.com/#/tv)
+ 
+# NOTICE
+  - 한글 데이터로 변형 중
+  - 코드 구조 세분화 작업 예정
